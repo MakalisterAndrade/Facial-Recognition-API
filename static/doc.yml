@@ -1,0 +1,43 @@
+openapi: 3.0.0
+info:
+  title: API de Reconhecimento Facial
+  version: 1.0.0
+paths:
+  /register:
+    post:
+      summary: Cadastrar a face de um aluno
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                id_matricula:
+                  type: string
+                nome_completo:
+                  type: string
+                image:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Aluno cadastrado com sucesso
+  /recognize:
+    post:
+      summary: Reconhecer a face de um aluno
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Aluno reconhecido
+        '401':
+          description: Aluno não reconhecido
